@@ -23,7 +23,7 @@ namespace SurveyApp.Controllers
 
         [HttpGet("{id}")]
         public async Task<UserAccount> GetById(int id)
-        {
+        {            
             return await _context.UserAccounts.FirstOrDefaultAsync(x => x.Id == id);
         }
 
