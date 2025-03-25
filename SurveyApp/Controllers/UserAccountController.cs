@@ -5,7 +5,6 @@ using SurveyApp.Data;
 using SurveyApp.Handlers;
 using SurveyApp.Models.Entities;
 
-
 namespace SurveyApp.Controllers
 {
     [Route("api/[controller]")]
@@ -22,9 +21,14 @@ namespace SurveyApp.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<UserAccount> GetById(int id)
-        {            
-            return await _context.UserAccounts.FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<ActionResult<UserAccount>> GetById(int id)
+        {
+            var userAccount = await _context.UserAccounts.FirstOrDefaultAsync(x => x.Id == id);
+            if (userAccount == null)
+            {
+                return NotFound();
+            }
+            return Ok(userAccount);
         }
 
         [HttpPost]
@@ -60,9 +64,9 @@ namespace SurveyApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete([FromBody] UserAccount userAccount)
+        public async Task<ActionResult> Delete(int id)
         {
-            var existingUserAccount = await _context.UserAccounts.FirstOrDefaultAsync(x => x.Id == userAccount.Id);
+            var existingUserAccount = await _context.UserAccounts.FirstOrDefaultAsync(x => x.Id == id);
             if (existingUserAccount == null)
             {
                 return NotFound("User account not found");
