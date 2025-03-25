@@ -6,7 +6,7 @@
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 # FROM mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2019 AS base
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
-USER ContainerUser
+#USER ContainerUser
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
