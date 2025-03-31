@@ -5,6 +5,8 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
+    tags:
+    - 1.*
   pull_request:
     branches: [ "master" ]
 jobs:
