@@ -41,7 +41,7 @@ jobs:
       with:
         context: SurveyApp/.
         push: true
-        target: final
+        # target: final
         tags: ${{ steps.meta.outputs.tags }}
         annotations: ${{ steps.meta.outputs.annotations }}
         # provenance: true
