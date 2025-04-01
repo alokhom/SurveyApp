@@ -9,6 +9,8 @@ on:
     - 1.*
   pull_request:
     branches: [ "master" ]
+    tags:
+    - 1.*
 jobs:
   build:
     runs-on: ubuntu-latest
